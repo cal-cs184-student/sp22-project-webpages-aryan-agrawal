@@ -15,96 +15,52 @@
 </head>
 <body>
     <br />
-    <h1 align="middle">Final Project Proposal</h1>
+    <h1 align="middle">Final Project Milestone</h1>
     <h2 align="middle">Aryan Agrawal, Ruslana Yurtyn, Aadith Srinivasan, Tarun Singh</h2>
 
-    <h2 align="middle">Summary</h2>
 
     <div class="padded">
         <p>
-            We want to create a program that given a point cloud input, efficiently outputs a mesh
-            representation of that point cloud. To do this, we can use the ball-pivoting algorithm for surface
-            reconstruction presented by Bernardini et al. Link: https://vgc.poly.edu/~csilva/papers/tvcg99.pdf
+            As we stated in the project proposal, our goal for this project is to create a program that
+            takes a point cloud input and efficiently outputs a mesh representation of that point cloud.
+            To do this, we are implementing the ball-pivoting algorithm for surface reconstruction presented 
+            in this paper: https://vgc.poly.edu/~csilva/papers/tvcg99.pdf
         </p>
-        <h2 align="middle">Problem Description</h2>
         <p>
-            As we discussed in lecture 10, there are a variety of ways to represent 3D objects digitally.
-            The geometry processing pipeline, as presented in class, involves scanning, processing, and then possibly
-            printing. This project fits within the scanning stage, since we are going from a point cloud to a mesh.
-            There are several algorithms that accomplish this, in this project we will explore the
-            implementation of at least one of these.
+            Much of the work for this project has been in designing and implementing the processing pipeline. Questions 
+            we had to answer included what format would we represent our inputs in, and how do we get them? How do we
+            represent our outputs, and how do we visualize them? We determined that the best way for us to get our inputs,
+            specicially, a point cloud (which consists of a set of vertices defined by their positions and their estimated normals), is 
+            to convert from existing ply files. The ply file format is defined in the Stanford 3D Scanning Repository (http://graphics.stanford.edu/data/3Dscanrep/).
+            As we parsed the format of these files, we realized that the standard ply format contains more information than we need, but also doesn't explicitly
+            have all the info we need. Specifically, we can get the vertex positions from the ply file, but we have to calculate the normals ourselves.
+        </p>
+        <p>
+            As you can see in the submitted video, much of the code we've written so far had to do with parsing our inputs, calculating 
+            estimated surface normals for each vertex, and creating our own file format to represent the point cloud (vertices and their estimated normals).
+            We've also begun implementing the algorithm itself, with create_voxels creating a map that groups together vertices in the same spatial "neighborhood" for 
+            faster lookup, and a function that calculates a proper ro value for running BPA.
+        </p>
+        <p>
+            So far everything is going pretty much to plan. Our next steps are to finish find_seed_triangle so we can write the iterative portion of BPA, and put together all the 
+            pieces. There's some more unit testing to be done to ensure that our normals are all calculated correctly, but we're definitely on schedule to reach our goals and 
+            feeling confident that we have time to finish (while allowing time for some debugging).
         </p>
 
-
-        <h2 align="middle">Goals and Deliverables</h2>
         <p>
-            To measure the quality of our results, we can compare images that have a mesh representation to our outputted mesh
-            representation. Comparing these images can show us whether or not our representation accurately connects points.
-            If our outputted mesh is similar to the original given mesh, then we know that our algorithm created the mesh representation correctly.
-        </p>
-        <p>
-            If we implement more than one algorithm to create the mesh representation, we can
-            compare different methods based on runtime as the input files become more and more complex.
-        </p>
-        <p>
-            Some questions we will answer in our analysis include:
-            (1) How accurately does our implementation of the algorithm capture the mesh representation?
-            (2) How do our implementations of different methods compare based on runtime?
-        </p>
-        <p>
-            Overall, what we plan to deliver is an implementation of the ball-pivoting algorithm for surface reconstruction.
-            This should be able to take in a point cloud and construct a mesh from these points.
-        </p>
-        <p>
-            Something that we hope to deliver, given sufficient time, is the Poisson Surface Reconstruction algorithm. If we implement this second algorithm,
-            then we will be able to compare the two implementations to see which one is more accurate as well as which one is more efficient.
-        </p>
-        <p>
-            Finally, if we still have extra time, we can try to implement a 3D reconstruction algorithm that gets point clouds from images that
-            we take ourselves. We can then use the point clouds we constructed ourselves to create meshes.
+            Below are links to our milestone video and milestone slides. On the milestone google form we've submitted some screenshots of additional code we've written since recording
+            our milestone video. Thanks!
         </p>
 
+        <h2 align="middle">Milestone Video Link</h2>
+        <p>
+            https://drive.google.com/file/d/1s04M29lyaCn-SoE6ma7KrdkSnmha3pgu/view?usp=sharing
+        </p>
 
-
-        <h2 align="middle">Schedule</h2>
-        <h3>Week of April 4th</h3>
+        <h2 align="middle">Slides Link</h2>
         <p>
-            First Meeting. (1) Figure out what project we are working on and (2) Finish project proposal and complete form.
+            https://docs.google.com/presentation/d/170dOdePUvmDF7bQ0LBY35QG5Vf1_wtLGZ8BRDmjXzuE/edit?usp=sharing
         </p>
-        <h3>Week of April 11th</h3>
-        <p>
-            Do research and begin planning implementation. Read through
-            the following papers: (1) http://graphics.stanford.edu/data/3Dscanrep/ (2) https://vgc.poly.edu/~csilva/papers/tvcg99.pdf.
-        </p>
-        <h3>Week of April 18th</h3>
-        <p>
-            Start implementation.
-        </p>
-        <h3>Week of April 25th</h3>
-        <p>
-            Self-checkpoint.
-        </p>
-        <h3>Week of May 2nd</h3>
-        <p>
-            Finish Implementation.
-        </p>
-        <h3>Project Presentations: Thursday, May 5th</h3>
-        <h3>Final Deliverables: Tuesday, May 10th, 11:59 PM</h3>
-
-        <h2 align="middle">Resources</h2>
-        <h3>Repository for 3D Mesh Models</h3>
-        <p>
-            http://graphics.stanford.edu/data/3Dscanrep/
-        </p>
-        <h3>Ball pivoting algorithm for surface reconstruction</h3>
-        <p>
-            https://vgc.poly.edu/~csilva/papers/tvcg99.pdf
-        </p>
-        <h3>Poisson Surface Reconstruction</h3>
-        <p>
-            https://hhoppe.com/poissonrecon.pdf
-        </p>
-        
     </div>
 </body>
 </html>
